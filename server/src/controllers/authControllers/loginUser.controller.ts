@@ -13,7 +13,7 @@ const loginUserController = async (req: Request, res: Response) => {
 	try {
 		const foundUser = await authenticateUserService(username, password);
 
-		generateToken(foundUser.id, res);
+		generateToken(foundUser.id, foundUser.role, res);
 
 		const { password: _, ...user } = foundUser;
 

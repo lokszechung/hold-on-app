@@ -1,9 +1,11 @@
 import jwt from "jsonwebtoken";
 import { Response } from "express";
 
-const generateToken = (userId: string, res: Response) => {
+type Role = "ADMIN" | "LEADER" | "YOUTH";
+
+const generateToken = (userId: string, role: Role, res: Response) => {
 	try {
-		const token = jwt.sign({ userId }, process.env.JWT_SECRET!, {
+		const token = jwt.sign({ userId, role }, process.env.JWT_SECRET!, {
 			expiresIn: "7d",
 		});
 
