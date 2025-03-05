@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
 import createUserService from "../../services/authServices/createUser.service";
 
-const signUpUserController = async (
-	req: Request,
-	res: Response
-): Promise<void> => {
+const signUpUserController = async (req: Request, res: Response) => {
 	const requiredFields = ["id", "firstName", "lastName", "role"];
 	const missingFields = requiredFields.filter((field) => !req.body[field]);
 

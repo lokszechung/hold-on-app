@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 import authRouter from "./routes/auth.route";
+import userRouter from "./routes/user.route";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -25,6 +26,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 app.use("/api/auth", authRouter);
+app.use("/api/user", userRouter);
 
 app.listen(2904, () => {
 	console.log("Server is running on port 2904");

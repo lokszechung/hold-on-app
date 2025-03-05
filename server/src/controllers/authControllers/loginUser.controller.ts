@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import authenticateUserService from "../../services/authServices/authenticateUser.service";
 import generateToken from "../../utils/generateToken";
 
-const loginUserController = async (req: Request, res: Response) => {
+const logInUserController = async (req: Request, res: Response) => {
 	const { username, password } = req.body;
 
 	if (!username || !password) {
@@ -36,4 +36,4 @@ const loginUserController = async (req: Request, res: Response) => {
 	}
 };
 
-export default loginUserController;
+export default logInUserController;
