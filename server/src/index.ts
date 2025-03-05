@@ -11,10 +11,10 @@ const app = express();
 
 app.use(cookieParser());
 
-app.use((req, _res, next) => {
-	console.log("Cookies: ", req.cookies);
-	next();
-});
+// app.use((req, _res, next) => {
+// 	console.log("Cookies: ", req.cookies);
+// 	next();
+// });
 
 app.use(express.json());
 

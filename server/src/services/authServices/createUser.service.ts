@@ -1,9 +1,6 @@
 import prisma from "../../db/prisma";
 import bcryptjs from "bcryptjs";
 import generateUsername from "../../utils/generateUsername";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 type CreateUserData = {
 	id: string;
@@ -18,7 +15,7 @@ const createUserService = async (createUserData: CreateUserData) => {
 	let hashedPassword: string | null = null;
 
 	if (role === "LEADER") {
-		const defaultPassword = process.env.DEFAULT_LEADER_PASSWORD || "changeme";
+		const defaultPassword = process.env.LEADER_DEFAULT_PASSWORD! || "changeme";
 		const salt = await bcryptjs.genSalt(10);
 		hashedPassword = await bcryptjs.hash(defaultPassword, salt);
 	}
