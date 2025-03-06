@@ -16,6 +16,7 @@ declare global {
 			user?:
 				| {
 						id: string;
+						role: Role;
 				  }
 				| undefined;
 		}
@@ -64,7 +65,8 @@ const secureRoute = async (req: Request, res: Response, next: NextFunction) => {
 			return;
 		}
 
-		req.user = user;
+		const { password, ...userWithoutPassword } = user;
+		req.user = userWithoutPassword;
 
 		next();
 	} catch (error: any) {
@@ -73,3 +75,5 @@ const secureRoute = async (req: Request, res: Response, next: NextFunction) => {
 		return;
 	}
 };
+
+export default secureRoute;
